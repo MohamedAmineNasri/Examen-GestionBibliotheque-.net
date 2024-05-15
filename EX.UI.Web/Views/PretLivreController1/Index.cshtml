@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EX.Core.Domain.PretLivre>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<fieldset>
+    <legend>Search By:</legend>
+    <form asp-action="index">
+        <label> Date Debut</label>
+        <input type="text" name="filter1" />
+        <label> Date Fin</label>
+        <input type="text" name="filter2" />
+        <input type="submit" value="Rechercher" />
+    </form>
+</fieldset>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                DateDeubt
+            </th>
+            <th>
+                DateFin
+            </th>
+            <th>
+                 Abonne
+            </th>
+            <th>
+                Livre
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.DateDeubt)
+                
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.DateFin)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.MyAbonne.Nom)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.MyLivre.Titre)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

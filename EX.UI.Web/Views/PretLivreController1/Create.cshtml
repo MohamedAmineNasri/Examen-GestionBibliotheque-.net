@@ -1,0 +1,50 @@
+﻿@model EX.Core.Domain.PretLivre
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>PretLivre</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DateFin" class="control-label"></label>
+                <input asp-for="DateFin" class="form-control" />
+                <span asp-validation-for="DateFin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateDeubt" class="control-label"></label>
+                <input asp-for="DateDeubt" class="form-control" />
+                <span asp-validation-for="DateDeubt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LivreFk" class="control-label"></label>
+                <select class="form-control" asp-for="LivreFk" asp-items="@ViewBag.liv">
+                </select>
+                <span asp-validation-for="LivreFk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AbonneFk" class="control-label"></label>
+                <select class="form-control" asp-for="AbonneFk" asp-items="@ViewBag.abon">
+                </select>
+                <span asp-validation-for="AbonneFk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
